@@ -79,14 +79,57 @@ body {
   background-color: #f0f0f0;
 }
 
-[class*=container] {
+.wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   height: 100vh;
+}
+
+.side-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 15rem;
+}
+.side-menu .logo {
+  width: 100%;
+  max-width: 7.25rem;
+}
+.side-menu .menu-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.side-menu .menu-list .margin-top-auto {
+  margin-top: auto;
+}
+.side-menu .menu-list .active {
+  color: #4F46E5;
 }

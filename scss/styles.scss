@@ -4,6 +4,7 @@
 $background: #F3F4F6;
 $menuBackground: #F9FAFB;
 $menuColor: #374151;
+$primary-color: #4F46E5;
 
 
 body {
@@ -11,10 +12,42 @@ body {
     background-color: #f0f0f0;
 }
 
-[class*="container"] {
+.wrapper {
     display: flex;
-    font-family: "Fredoka", sans-serif;
+    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     align-items: center;
+    justify-content: space-between;
     height: 100vh;
+}
+
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: toRem(240);
+
+
+    .logo {
+        width: 100%;
+        max-width: toRem(116);
+    }
+
+    .menu-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .menu-item {}
+
+        .margin-top-auto {
+            margin-top: auto;
+        }
+
+        .active {
+            color: $primary-color;
+        }
+    }
 }
