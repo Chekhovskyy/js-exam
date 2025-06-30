@@ -1,0 +1,31 @@
+@import "reset";
+@import "mixins";
+
+$primary-color: #007bff;
+$primary-hover: #0056b3;
+$border-color: #ddd;
+$border-focus: #007bff;
+$text-color: #333;
+$label-color: #555;
+$background: #fff;
+$shadow-light: rgba(0, 0, 0, 0.1);
+$border-radius: 4px;
+$input-padding: 10px 12px;
+$button-padding: 12px 24px;
+$spacing: 16px;
+$transition: 0.2s ease;
+
+body {
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+[class*="container"] {
+    max-width: toRem(1170);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    align-items: center;
+    height: 100vh;
+}
