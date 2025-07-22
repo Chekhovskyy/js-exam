@@ -16,38 +16,191 @@ body {
     display: flex;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
 }
 
 .side-menu {
+    padding: toRem(24);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: toRem(240);
-
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: $menuBackground;
 
     .logo {
         width: 100%;
         max-width: toRem(116);
+        justify-content: flex-start;
     }
 
-    .menu-list {
+    .menu-wrapper {
+        flex-grow: 1;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 0;
+            gap: toRem(12);
+            width: 100%;
+
+            .menu-item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: toRem(12) toRem(16);
+                gap: toRem(8);
+            }
+
+            .active {
+                color: $primary-color;
+                background-color: #E0E7FF;
+                border-radius: toRem(8);
+            }
+        }
+    }
+
+    .project-setup {
+        display: flex;
+        align-items: center;
+        gap: toRem(8);
+        width: 100%;
+        padding: toRem(12) toRem(16);
+        align-self: flex-end;
+    }
+}
+
+.content {
+    background-color: $background;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #E5E7EB;
+
+
+    .header-section {
+        display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding: toRem(12) toRem(24);
+        max-height: toRem(64);
+        border-bottom: 1px solid #E5E7EB;
 
-        .menu-item {}
-
-        .margin-top-auto {
-            margin-top: auto;
+        .title {
+            font-size: toRem(20);
+            color: $menuColor;
+            font-weight: 700;
         }
 
-        .active {
-            color: $primary-color;
+        .profile-photo {
+            width: toRem(40);
+            height: toRem(40);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    .main-section {
+        padding-left: toRem(24);
+        padding-right: toRem(24);
+        padding-top: toRem(32);
+
+        .filter {
+            padding-bottom: toRem(16);
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #E5E7EB;
+            max-width: 100%;
+
+            .form {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: toRem(16);
+                flex: 1 1 auto;
+
+                .filter-form,
+                .status-form,
+                .user-form,
+                .view-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: toRem(4);
+                    width: 100%;
+                    height: 100%;
+                    max-height: toRem(69);
+                }
+
+                .filter-form {
+                    max-width: toRem(280);
+
+                }
+
+                .status-form,
+                .view-form {
+                    max-width: toRem(160);
+                }
+
+                .user-form {
+                    max-width: toRem(200);
+                }
+
+                input,
+                select {
+                    font-size: toRem(14);
+                    color: #111827;
+                    background-color: #FFFFFF;
+                    padding: toRem(8) toRem(12);
+                    border-radius: toRem(8);
+                    border: 1px solid #E5E7EB;
+                }
+
+                input {
+                    color: #9CA3AF;
+                    padding: toRem(8) toRem(12) toRem(8) toRem(40); // збільшили left padding для іконки
+                    border-radius: toRem(8);
+                    border: 1px solid #E5E7EB;
+                    background-image: url('../images/icons/filter-icon.svg');
+                    background-repeat: no-repeat;
+                    background-position: toRem(12) center;
+                    background-size: toRem(20);
+                }
+
+                label {
+                    font-size: toRem(14);
+                    color: $menuColor;
+                    line-height: 1.5;
+                }
+            }
+
+            .create-task-button {
+                font-weight: 600;
+                line-height: 1.5;
+                padding-left: toRem(52);
+                padding-top: toRem(12);
+                padding-right: toRem(20);
+                padding-bottom: toRem(12);
+
+                background-color: #4F46E5;
+                color: #F3F4F6;
+                border-radius: toRem(8);
+                position: relative;
+                width: 100%;
+                height: 100%;
+                max-width: toRem(165);
+                max-height: toRem(48);
+                align-self: flex-end;
+                background-image: url('../images/icons/cross.svg');
+                background-repeat: no-repeat;
+                background-position: 20px center;
+                background-size: toRem(24);
+            }
         }
     }
 }

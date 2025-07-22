@@ -18,36 +18,68 @@
     <div class="wrapper">
         <div class="side-menu">
             <img src="images/icons/logo.svg" alt="logo" class="logo">
-            <ul class="menu-list">
-                <li class="menu-item active">
-                    <img src="images/icons/tasks-active-logo.svg" alt="task logo" class="menu-logo">
-                    <a href="tasks.html">Tasks</a>
-                </li>
-                <li class="menu-item">
-                    <img src="images/icons/statistic-icon.svg" alt="statistics logo" class="menu-logo">
-                    <a href="#">Statistics</a>
-                </li>
-                <li class="menu-item">
-                    <img src="images/icons/settings-icon.svg" alt="settings logo" class="menu-logo">
-                    <a href="#">Settings</a>
-                </li>
-                <li class="menu-item">
-                    <img src="images/icons/about-icon.svg" alt="about logo" class="menu-logo">
-                    <a href="#">About</a>
-                </li>
-                <li class="menu-item">
-                    <img src="images/icons/setup-logo.svg" alt="setup logo" class="menu-logo margin-top-auto">
-                    <a href="#">Project Setup</a>
-                </li>
-            </ul>
+            <div class="menu-wrapper">
+                <ul class="menu-list">
+                    <li class="menu-item active">
+                        <img src="images/icons/tasks-active-logo.svg" alt="task logo" class="menu-logo">
+                        <a href="tasks.html">Tasks</a>
+                    </li>
+                    <li class="menu-item">
+                        <img src="images/icons/statistic-icon.svg" alt="statistics logo" class="menu-logo">
+                        <a href="#">Statistics</a>
+                    </li>
+                    <li class="menu-item">
+                        <img src="images/icons/settings-icon.svg" alt="settings logo" class="menu-logo">
+                        <a href="#">Settings</a>
+                    </li>
+                    <li class="menu-item">
+                        <img src="images/icons/about-icon.svg" alt="about logo" class="menu-logo">
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="project-setup">
+                <img src="images/icons/setup-logo.svg" alt="setup logo" class="menu-logo">
+                <a href="#">Project Setup</a>
+            </div>
         </div>
         <div class="content">
-            <section class="header-section"></section>
-            <section class="filters-section"></section>
-            <section class="content-section"></section>
+            <section class="header-section">
+                <h1 class="title">Tasks</h1>
+                <img src="images/content/header-photo.jpg" alt="фото профілю" class="profile-photo">
+            </section>
+            <section class="main-section">
+                <div class="filter">
+                    <form action="#" method="get" class="form">
+                        <div class="filter-form">
+                            <label for="filter">Filter</label>
+                            <input type="text" id="filter" name="filter" placeholder="Filter tasks...">
+                        </div>
+                        <div class="status-form">
+                            <label for="status">Status</label>
+                            <select id="status" name="status">
+                                <option value="all">All</option> ;
+                            </select>
+                        </div>
+                        <div class="user-form">
+                            <label for="user">User</label>
+                            <select id="user" name="user">
+                                <option value="all">All</option>
+                            </select>
+                        </div>
+                        <div class="view-form">
+                            <label for="view">View</label>
+                            <select id="view" name="view">
+                                <option value="cards">Cards</option>
+                                <option value="list">List</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button type="submit" class="create-task-button">Create Task</button>
+                </div>
+            </section>
         </div>
-    </div>
-    <script src="scripts/script.js" defer></script>
+        <script src="scripts/script.js" defer></script>
 </body>
 
 </html>
