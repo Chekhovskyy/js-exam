@@ -126,7 +126,6 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
 
-            // Градієнт підкладка для анімації
             &::before {
                 content: '';
                 position: absolute;
@@ -178,15 +177,24 @@
 
     .tasks-cards {
         .cards-list {
-            display: flex;
-            gap: toRem(40);
             padding-top: toRem(40);
+            transition: all 0.3s ease;
 
+            &.cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(toRem(260), 1fr));
+                gap: toRem(40);
+            }
 
+            // Додано: стилі для виду списком
+            &.list {
+                display: flex;
+                flex-direction: column;
+                gap: toRem(16);
+            }
         }
     }
 }
-
 
 .cards-item {
     display: flex;
@@ -196,18 +204,131 @@
     border-radius: toRem(8);
     padding: toRem(12);
     width: 100%;
-    height: 100%;
-    max-width: toRem(260);
-    max-height: toRem(182);
+    transition: all 0.3s ease;
 
-    &:hover {}
+    // Стилі для режиму карток (без змін)
+    .cards-list.cards & {
+        max-width: toRem(260);
+        max-height: toRem(182);
+    }
+
+    // Додано: стилі для режиму списку - всі елементи в рядок
+    .cards-list.list & {
+        flex-direction: row;
+        align-items: center;
+        max-width: none;
+        max-height: none;
+        gap: 0;
+        padding: toRem(16) toRem(20);
+
+        // Змінено: реструктуризація layout для точного порядку елементів
+        .task-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0;
+            flex-shrink: 0;
+            order: 1;
+
+            .task-status-done,
+            .task-status-todo {
+                width: 100%;
+                max-width: toRem(85); // Перший елемент: статус 85px
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .task-name {
+                width: 100%;
+                max-width: toRem(240); // Другий елемент: назва таски 240px
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-left: 0;
+            }
+        }
+
+        .cards-body {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0; // Змінено: прибрав відступи між елементами
+            order: 2;
+
+            .task-priority {
+                width: 100%;
+                max-width: toRem(115); // Третій елемент: пріоритет 115px
+                flex-shrink: 0;
+
+                .priority-value {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .task-user-info {
+                width: 100%;
+                max-width: toRem(171); // Четвертий елемент: юзер нейм 171px
+                flex-shrink: 0;
+
+                .user-name {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .task-date {
+                width: 100%;
+                max-width: toRem(123); // П'ятий елемент: дата 123px
+                flex-shrink: 0;
+
+                .date-value {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        .task-description {
+            width: 100%;
+            max-width: toRem(178); // Шостий елемент: опис 178px
+            min-width: auto;
+            min-height: auto;
+            flex-shrink: 0;
+            order: 3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
     .task-header {
         color: #111827;
-        // margin-bottom: toRem(12);
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        // Додано: стилі для режиму карток після реорганізації HTML
+        .cards-list.cards & {
+
+            .task-status-done,
+            .task-status-todo {
+                order: 2; // В режимі карток статус має бути праворуч
+            }
+
+            .task-name {
+                order: 1; // В режимі карток назва має бути ліворуч
+            }
+        }
 
         .task-name {
             font-size: toRem(16);
@@ -232,106 +353,116 @@
             padding: toRem(4) toRem(10);
             border-radius: toRem(999);
         }
+    }
 
-        @media (min-width: $large-desktop) {
-            .main-section {
-                padding-left: toRem(32);
-                padding-right: toRem(32);
-                padding-top: toRem(40);
+    .cards-body {
+        display: flex;
+        flex-direction: column;
+        gap: toRem(8);
+        flex-grow: 1;
 
-                .filter {
-                    gap: toRem(32);
+        // Додано: стилі для режиму карток після реорганізації HTML
+        .cards-list.cards & {
+            .task-priority {
+                order: 2; // В режимі карток пріоритет другий
+            }
 
-                    .form {
-                        gap: toRem(24);
+            .task-user-info {
+                order: 1; // В режимі карток юзер перший
+            }
 
-                        .filter-form {
-                            max-width: toRem(320);
-                        }
+            .task-date {
+                order: 3; // В режимі карток дата третя
+            }
+        }
 
-                        .status-form,
-                        .view-form {
-                            max-width: toRem(180);
-                        }
+        .task-user-info {
+            display: flex;
+            align-items: center;
+            gap: toRem(8);
+            color: #111827;
+            font-size: toRem(14);
+            font-weight: 500;
 
-                        .user-form {
-                            max-width: toRem(240);
-                        }
-                    }
+            .user-image {
+                border-radius: 50%;
+                max-width: toRem(28);
+                max-height: toRem(28);
+            }
+        }
 
-                    .create-task-button {
-                        max-width: toRem(180);
-                        max-height: toRem(52);
-                        font-size: toRem(15);
-                    }
-                }
+        .task-priority {
+            display: flex;
+            align-items: center;
+            gap: toRem(8);
+
+            .priority-icon {
+                width: toRem(16);
+                height: toRem(16);
+            }
+
+            .priority-value {
+                font-size: toRem(14);
+                color: #6B7280;
+            }
+        }
+
+        .task-date {
+            display: flex;
+            align-items: center;
+            gap: toRem(8);
+
+            .task-date-icon {
+                width: toRem(16);
+                height: toRem(16);
+            }
+
+            .date-value {
+                font-size: toRem(14);
+                color: #6B7280;
             }
         }
     }
-}
 
-.cards-body {
-    display: flex;
-    flex-direction: column;
-    gap: toRem(8);
-    flex-grow: 1;
-
-    .task-user-info {
-        display: flex;
-        align-items: center;
-        gap: toRem(8);
-        color: #111827;
-        font-size: toRem(14);
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: toRem(8);
-
-        .user-image {
-            border-radius: 50%;
-            max-width: toRem(28);
-            max-height: toRem(28);
-        }
-    }
-
-    .task-priority {
-        display: flex;
-        align-items: flex-start;
-        gap: toRem(8);
-        align-items: center;
-
-
-        .priority-icon {
-            width: toRem(16);
-            height: toRem(16);
-        }
-
-        .priority-value {
-            font-size: toRem(14);
-            color: #6B7280;
-        }
-    }
-
-    .task-date {
-        display: flex;
-        align-items: center;
-        gap: toRem(8);
-
-        .task-date-icon {
-            width: toRem(16);
-            height: toRem(16);
-        }
-
-        .date-value {
-            font-size: toRem(14);
-            color: #6B7280;
-        }
+    .task-description {
+        min-width: toRem(228);
+        min-height: toRem(16);
     }
 }
 
-.task-description {
-    min-width: toRem(228);
-    min-height: toRem(16);
+@media (min-width: $large-desktop) {
+    .main-section {
+        padding-left: toRem(32);
+        padding-right: toRem(32);
+        padding-top: toRem(40);
+
+        .filter {
+            gap: toRem(32);
+
+            .form {
+                gap: toRem(24);
+
+                .filter-form {
+                    max-width: toRem(320);
+                }
+
+                .status-form,
+                .view-form {
+                    max-width: toRem(180);
+                }
+
+                .user-form {
+                    max-width: toRem(240);
+                }
+            }
+
+            .create-task-button {
+                max-width: toRem(180);
+                max-height: toRem(52);
+                font-size: toRem(15);
+            }
+        }
+    }
 }
 
 @media (min-width: $small-desktop) and (max-width: #{$large-desktop - 1px}) {
@@ -419,6 +550,35 @@
                 max-width: none;
                 max-height: toRem(48);
                 align-self: stretch;
+            }
+        }
+    }
+
+    .tasks-cards {
+        .cards-list {
+            &.cards {
+                grid-template-columns: 1fr;
+            }
+
+            // Додано: адаптивність для мобільних пристроїв у режимі списку
+            &.list {
+                .cards-item {
+                    flex-direction: column;
+                    gap: toRem(12);
+
+                    .task-header {
+                        width: 100%;
+                    }
+
+                    .cards-body {
+                        flex-direction: column;
+                        gap: toRem(8);
+                    }
+
+                    .task-description {
+                        width: 100%;
+                    }
+                }
             }
         }
     }

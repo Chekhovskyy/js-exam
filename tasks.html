@@ -69,7 +69,7 @@
                         </div>
                         <div class="view-form">
                             <label for="view">View</label>
-                            <select id="view" name="view">
+                            <select id="view" name="view" data-view="cards">
                                 <option value="cards">Cards</option>
                                 <option value="list">List</option>
                             </select>
@@ -81,23 +81,24 @@
                     </button>
                 </div>
                 <div class="tasks-cards">
-                    <ul class="cards-list">
+                    <ul class="cards-list cards">
                         <li class="cards-item">
+                            <!-- Змінено: реорганізація структури для правильного порядку в режимі списку -->
                             <div class="task-header">
-                                <h3 class="task-name">Cook</h3>
                                 <p class="task-status-done">Done</p>
+                                <h3 class="task-name">Cook</h3>
                             </div>
                             <div class="cards-body">
-                                <div class="task-user-info">
-                                    <img src="images/content/olena-user-image.jpg" alt="Olena profile photo"
-                                        class="user-image">
-                                    <p class="user-name">Olenka</p>
-                                </div>
                                 <div class="task-priority">
                                     <img src="images/icons/high-priority-icon.svg" alt="high priority icon"
                                         class="priority-icon">
                                     <p class="priority-value">High Priority</p>
                                 </div>
+                                <div class="task-user-info">
+                                    <img src="images/content/olena-user-image.jpg" alt="Olena profile photo"
+                                        class="user-image">
+                                    <p class="user-name">Olenka</p>
+                                </div>
                                 <div class="task-date">
                                     <img src="images/icons/calendar-icon.svg" alt="calendar icon"
                                         class="task-date-icon">
@@ -107,21 +108,22 @@
                             <p class="task-description"></p>
                         </li>
                         <li class="cards-item">
+                            <!-- Змінено: реорганізація структури для правильного порядку в режимі списку -->
                             <div class="task-header">
-                                <h3 class="task-name">Super puper task</h3>
                                 <p class="task-status-todo">To do</p>
+                                <h3 class="task-name">Super puper task</h3>
                             </div>
                             <div class="cards-body">
-                                <div class="task-user-info">
-                                    <img src="images/content/vlad-user-image.jpg" alt="Olena profile photo"
-                                        class="user-image">
-                                    <p class="user-name">Vlad</p>
-                                </div>
                                 <div class="task-priority">
-                                    <img src="images/icons/low-priority-icon.svg" alt="high priority icon"
+                                    <img src="images/icons/low-priority-icon.svg" alt="low priority icon"
                                         class="priority-icon">
                                     <p class="priority-value">Low priority</p>
                                 </div>
+                                <div class="task-user-info">
+                                    <img src="images/content/vlad-user-image.jpg" alt="Vlad profile photo"
+                                        class="user-image">
+                                    <p class="user-name">Vlad</p>
+                                </div>
                                 <div class="task-date">
                                     <img src="images/icons/calendar-icon.svg" alt="calendar icon"
                                         class="task-date-icon">
@@ -131,20 +133,21 @@
                             <p class="task-description"></p>
                         </li>
                         <li class="cards-item">
+                            <!-- Змінено: реорганізація структури для правильного порядку в режимі списку -->
                             <div class="task-header">
-                                <h3 class="task-name">Take a rest</h3>
                                 <p class="task-status-todo">On hold</p>
+                                <h3 class="task-name">Take a rest</h3>
                             </div>
                             <div class="cards-body">
-                                <div class="task-user-info">
-                                    <img src="images/content/vlad-user-image.jpg" alt="Olena profile photo"
-                                        class="user-image">
-                                    <p class="user-name">Vlad</p>
-                                </div>
                                 <div class="task-priority">
-                                    <img src="images/icons/medium-priority-icon.svg" alt="high priority icon"
+                                    <img src="images/icons/medium-priority-icon.svg" alt="medium priority icon"
                                         class="priority-icon">
                                     <p class="priority-value">Medium priority</p>
+                                </div>
+                                <div class="task-user-info">
+                                    <img src="images/content/vlad-user-image.jpg" alt="Vlad profile photo"
+                                        class="user-image">
+                                    <p class="user-name">Vlad</p>
                                 </div>
                                 <div class="task-date">
                                     <img src="images/icons/calendar-icon.svg" alt="calendar icon"
