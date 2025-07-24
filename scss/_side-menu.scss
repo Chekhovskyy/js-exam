@@ -1,0 +1,189 @@
+.side-menu {
+    padding: toRem(24);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: toRem(240);
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: $menuBackground;
+    transition: max-width 0.3s ease;
+
+    .logo {
+        width: 100%;
+        max-width: toRem(116);
+        justify-content: flex-start;
+        transition: max-width 0.3s ease;
+    }
+
+    .menu-wrapper {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 0;
+            gap: toRem(12);
+            width: 100%;
+
+            .menu-item {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: toRem(12) toRem(16);
+                gap: toRem(8);
+                border-radius: toRem(8);
+                transition: all 0.2s ease;
+                cursor: pointer;
+
+                &:hover:not(.active) {
+                    background-color: #F3F4F6;
+                    color: $menuColor;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    font-weight: 500;
+                }
+            }
+
+            .active {
+                color: $primary-color;
+                background-color: #E0E7FF;
+                border-radius: toRem(8);
+                font-weight: 600;
+            }
+        }
+    }
+
+    .project-setup {
+        display: flex;
+        align-items: center;
+        gap: toRem(8);
+        width: 100%;
+        padding: toRem(12) toRem(16);
+        align-self: flex-end;
+        border-radius: toRem(8);
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #F3F4F6;
+        }
+
+        a {
+            text-decoration: none;
+            color: $menuColor;
+            font-weight: 500;
+        }
+    }
+}
+
+
+@media (min-width: $large-desktop) {
+    .side-menu {
+        max-width: toRem(280);
+        padding: toRem(32);
+
+        .logo {
+            max-width: toRem(140);
+        }
+    }
+}
+
+
+@media (min-width: $tablet) and (max-width: #{$small-desktop}) {
+    .side-menu {
+        max-width: toRem(200);
+        padding: toRem(20);
+
+        .logo {
+            max-width: toRem(100);
+        }
+
+        .menu-wrapper {
+            gap: toRem(20);
+
+            .menu-list {
+                .menu-item {
+                    padding: toRem(10) toRem(12);
+                    gap: toRem(6);
+
+                    a {
+                        font-size: toRem(14);
+                    }
+                }
+            }
+        }
+
+        .project-setup {
+            padding: toRem(10) toRem(12);
+            gap: toRem(6);
+
+            a {
+                font-size: toRem(14);
+            }
+        }
+    }
+}
+
+@media (max-width: #{$tablet - 1px}) {
+    .side-menu {
+        flex-direction: row;
+        height: auto;
+        max-width: none;
+        width: 100%;
+        padding: toRem(16) toRem(20);
+        border-bottom: 1px solid #E5E7EB;
+        justify-content: space-between;
+        gap: toRem(30);
+
+        .logo {
+            max-width: toRem(80);
+        }
+
+        .menu-wrapper {
+            flex-grow: 1;
+
+            .menu-list {
+                flex-direction: row;
+                gap: toRem(16);
+
+                .menu-item {
+                    padding: toRem(8) toRem(12);
+                    gap: toRem(4);
+
+                    a {
+                        font-size: toRem(13);
+                    }
+
+                    .menu-logo {
+                        width: toRem(16);
+                        height: toRem(16);
+                    }
+                }
+            }
+        }
+
+        .project-setup {
+            align-self: center;
+            padding: toRem(8) toRem(12);
+
+            a a {
+                font-size: toRem(13);
+            }
+
+            .menu-logo {
+                width: toRem(16);
+                height: toRem(16);
+            }
+        }
+    }
+}

@@ -1,0 +1,425 @@
+.main-section {
+    padding-left: toRem(24);
+    padding-right: toRem(24);
+    padding-top: toRem(32);
+
+    .filter {
+        padding-bottom: toRem(16);
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #E5E7EB;
+        max-width: 100%;
+        align-items: flex-end;
+        gap: toRem(24);
+
+        .form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: toRem(16);
+            flex: 1 1 auto;
+
+            .filter-form,
+            .status-form,
+            .user-form,
+            .view-form {
+                display: flex;
+                flex-direction: column;
+                gap: toRem(4);
+                width: 100%;
+                height: 100%;
+                max-height: toRem(69);
+            }
+
+            .filter-form {
+                max-width: toRem(280);
+            }
+
+            .status-form,
+            .view-form {
+                max-width: toRem(160);
+            }
+
+            .user-form {
+                max-width: toRem(200);
+            }
+
+            input,
+            select {
+                font-size: toRem(14);
+                color: #111827;
+                background-color: #FFFFFF;
+                padding: toRem(8) toRem(12);
+                border-radius: toRem(8);
+                border: 1px solid #E5E7EB;
+                transition: all 0.2s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: $primary-color;
+                    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+                }
+
+                &:hover {
+                    border-color: #D1D5DB;
+                }
+            }
+
+            input {
+                color: #9CA3AF;
+                padding: toRem(8) toRem(12) toRem(8) toRem(40);
+                border-radius: toRem(8);
+                border: 1px solid #E5E7EB;
+                background-image: url('../images/icons/filter-icon.svg');
+                background-repeat: no-repeat;
+                background-position: toRem(12) center;
+                background-size: toRem(20);
+
+                &::placeholder {
+                    color: #9CA3AF;
+                    transition: color 0.2s ease;
+                }
+
+                &:focus::placeholder {
+                    color: #D1D5DB;
+                }
+            }
+
+            select {
+                cursor: pointer;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23374151' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right toRem(12) center;
+                background-size: toRem(16);
+                padding-right: toRem(36);
+            }
+
+            label {
+                font-size: toRem(14);
+                color: $menuColor;
+                line-height: 1.5;
+                font-weight: 500;
+            }
+        }
+
+        .create-task-button {
+            font-weight: 600;
+            line-height: 1.5;
+            padding: toRem(12) toRem(20) toRem(12) toRem(20);
+            background-color: $primary-color;
+            color: #F3F4F6;
+            border-radius: toRem(8);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: toRem(165);
+            max-height: toRem(48);
+            align-self: flex-end;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: toRem(8);
+            font-size: toRem(14);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+
+            // Градієнт підкладка для анімації
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg,
+                        transparent,
+                        rgba(255, 255, 255, 0.2),
+                        transparent);
+                transition: left 0.6s ease;
+            }
+
+            .button-icon {
+                font-size: toRem(18);
+                font-weight: 300;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .button-text {
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            &:hover {
+                background-color: #3730A3;
+                box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+
+                .button-icon {
+                    transform: rotate(90deg);
+                }
+
+                &::before {
+                    left: 100%;
+                }
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 4px rgba(79, 70, 229, 0.3);
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+            }
+        }
+    }
+
+    .tasks-cards {
+        .cards-list {
+            display: flex;
+            gap: toRem(40);
+            padding-top: toRem(40);
+
+
+        }
+    }
+}
+
+
+.cards-item {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(12);
+    background-color: $menuBackground;
+    border-radius: toRem(8);
+    padding: toRem(12);
+    width: 100%;
+    height: 100%;
+    max-width: toRem(260);
+    max-height: toRem(182);
+
+    &:hover {}
+
+    .task-header {
+        color: #111827;
+        // margin-bottom: toRem(12);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .task-name {
+            font-size: toRem(16);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .task-status-done {
+            font-size: toRem(12);
+            font-weight: 500;
+            color: #16A34A;
+            background-color: #DCFCE7;
+            padding: toRem(4) toRem(10);
+            border-radius: toRem(999);
+        }
+
+        .task-status-todo {
+            font-size: toRem(12);
+            font-weight: 500;
+            color: #1F2937;
+            background-color: #E5E7EB;
+            padding: toRem(4) toRem(10);
+            border-radius: toRem(999);
+        }
+
+        @media (min-width: $large-desktop) {
+            .main-section {
+                padding-left: toRem(32);
+                padding-right: toRem(32);
+                padding-top: toRem(40);
+
+                .filter {
+                    gap: toRem(32);
+
+                    .form {
+                        gap: toRem(24);
+
+                        .filter-form {
+                            max-width: toRem(320);
+                        }
+
+                        .status-form,
+                        .view-form {
+                            max-width: toRem(180);
+                        }
+
+                        .user-form {
+                            max-width: toRem(240);
+                        }
+                    }
+
+                    .create-task-button {
+                        max-width: toRem(180);
+                        max-height: toRem(52);
+                        font-size: toRem(15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cards-body {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(8);
+    flex-grow: 1;
+
+    .task-user-info {
+        display: flex;
+        align-items: center;
+        gap: toRem(8);
+        color: #111827;
+        font-size: toRem(14);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: toRem(8);
+
+        .user-image {
+            border-radius: 50%;
+            max-width: toRem(28);
+            max-height: toRem(28);
+        }
+    }
+
+    .task-priority {
+        display: flex;
+        align-items: flex-start;
+        gap: toRem(8);
+        align-items: center;
+
+
+        .priority-icon {
+            width: toRem(16);
+            height: toRem(16);
+        }
+
+        .priority-value {
+            font-size: toRem(14);
+            color: #6B7280;
+        }
+    }
+
+    .task-date {
+        display: flex;
+        align-items: center;
+        gap: toRem(8);
+
+        .task-date-icon {
+            width: toRem(16);
+            height: toRem(16);
+        }
+
+        .date-value {
+            font-size: toRem(14);
+            color: #6B7280;
+        }
+    }
+}
+
+.task-description {
+    min-width: toRem(228);
+    min-height: toRem(16);
+}
+
+@media (min-width: $small-desktop) and (max-width: #{$large-desktop - 1px}) {
+    .main-section {
+        .filter {
+            .form {
+                .filter-form {
+                    max-width: toRem(260);
+                }
+
+                .user-form {
+                    max-width: toRem(180);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: $tablet) and (max-width: #{$small-desktop}) {
+    .main-section {
+        padding-left: toRem(20);
+        padding-right: toRem(20);
+        padding-top: toRem(28);
+
+        .filter {
+            gap: toRem(16);
+            flex-wrap: wrap;
+
+            .form {
+                gap: toRem(12);
+                flex-wrap: wrap;
+
+                .filter-form {
+                    max-width: toRem(220);
+                    order: 1;
+                }
+
+                .status-form {
+                    max-width: toRem(140);
+                    order: 2;
+                }
+
+                .user-form {
+                    max-width: toRem(160);
+                    order: 3;
+                }
+
+                .view-form {
+                    max-width: toRem(140);
+                    order: 4;
+                }
+            }
+
+            .create-task-button {
+                max-width: toRem(145);
+                max-height: toRem(44);
+                font-size: toRem(13);
+                order: 5;
+            }
+        }
+    }
+}
+
+@media (max-width: #{$tablet - 1px}) {
+    .main-section {
+        padding: toRem(20);
+
+        .filter {
+            flex-direction: column;
+            gap: toRem(20);
+            align-items: stretch;
+
+            .form {
+                gap: toRem(16);
+
+                .filter-form,
+                .status-form,
+                .user-form,
+                .view-form {
+                    max-width: none;
+                }
+            }
+
+            .create-task-button {
+                max-width: none;
+                max-height: toRem(48);
+                align-self: stretch;
+            }
+        }
+    }
+}
